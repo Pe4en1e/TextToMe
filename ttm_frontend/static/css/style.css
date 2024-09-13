@@ -1,0 +1,119 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html{
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    background-color: #000;
+    overflow: hidden;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+
+.wrapper{
+	max-width: 1050px;
+	margin: 0 auto;
+}
+
+.intro {
+    height: 100vh;
+    width: 100%;;
+}
+
+
+.loginContainer {
+
+    padding-top: calc(50vh - 125px);
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.loginForm {
+
+    height: 250px;
+    width: 650px;
+    border: #fff 2px solid;
+    border-radius: 20px;
+
+}
+
+.loginField {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.textField {
+    width: 450px;
+    height: 40px;
+
+    margin-top: 60px;
+
+    font-family: "Montserrat", sans-serif;
+    padding-left: 10px;
+    font-weight: 600;
+
+    background: #fff;
+    outline: #fff 3px solid;
+    border-radius: 10px;
+    border: none;
+
+    transition: 0.3s;
+}
+
+.textField:hover {
+    outline: #5865F2 3px solid;
+    transition: 0.3s;
+}
+
+
+.button {
+
+    width: 300px;
+    height: 50px;
+
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+
+    background-color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: #5865F2;
+
+    transition: 0.3s;
+
+
+}
+
+
+.button:hover {
+    border: 3px #5865F2 solid;
+    transition: 0.3s;
+}
+
+
+@media (max-width: 500px) {
+
+    .loginForm {
+        width: 320px;
+        height: 250px;
+    }
+
+    .textField {
+        width: 280px;
+    }
+
+    .button {
+        width: 250px;
+    }
+    
+}

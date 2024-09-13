@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ttm_front:
+    build: ./ttm_frontend
+    command: gunicorn main:app -b 0.0.0.0:1034
+    volumes:
+      - ./front:/ttm_front
+    ports:
+      - 1034:1034
+    container_name: ttm_frontend

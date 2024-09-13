@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextToMe | Simpe chat</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <section class="intro" id="VANTA">
+        <div class="wrapper">
+
+            <div class="loginContainer">
+                <div class="loginForm">
+                    <form action="/chat" class="loginField">
+                        <input type="text" class="textField" placeholder="Представьтесь в чате" required name="username">
+                        <button class="button">Начать</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+    <script> 
+        VANTA.TOPOLOGY({
+        el: "#VANTA",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x5865F2,
+        backgroundColor: 0x0
+        })
+    </script>
+
+</body>
+</html>
