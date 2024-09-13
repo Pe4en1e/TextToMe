@@ -1,5 +1,6 @@
 
 from flask import Flask, render_template, request, redirect
+import requests as rq
 
 app = Flask(__name__)
 
@@ -11,7 +12,11 @@ def root():
 def chat():
     if request.method == "GET":
         return redirect('/')
-    return render_template('chat.html')
+
+    x = rq.get("http://127.0.0.1:8080/getAllMessages").json()
+    print(x)
+
+    return render_template('chat.html', messages = x)
 
 if __name__ == "__main__":
     app.run(debug=True, port=7070)

@@ -13,10 +13,16 @@
     <section class="chatWindow">
         <div class="wrapper">
             <div class="chatBlock">
+
+                {% for message in messages %}
+
                 <div class="messageBubble">
-                    <h1 class="messageBubbleAuthor">messageAuthor</h1>
-                    <h1 class="messageBubbleContent">this is long veeeeeeeryyyyyy looooooooooooong message content</h1>
+                    <h1 class="messageBubbleAuthor">{{ message['author'] }}</h1>
+                    <h1 class="messageBubbleContent"> {{ message['text'] }} </h1>
                 </div>
+
+                {% endfor %}
+                
             </div>
         </div>
     </section>
