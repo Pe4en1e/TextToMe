@@ -9,3 +9,13 @@ services:
     ports:
       - 1034:1034
     container_name: ttm_frontend
+  ttm_db:
+    image: mysql:latest
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: textToMeDB
+      MYSQL_DATABASE: default
+      MYSQL_USER: user
+      MYSQL_PASSWORD: ttm12345
+    container_name: ttm_db
