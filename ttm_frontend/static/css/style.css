@@ -69,7 +69,7 @@ html{
     transition: 0.3s;
 }
 
-.textField:hover {
+.textField:focus {
     outline: #5865F2 3px solid;
     transition: 0.3s;
 }
