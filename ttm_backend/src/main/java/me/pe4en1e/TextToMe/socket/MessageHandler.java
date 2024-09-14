@@ -2,6 +2,7 @@ package me.pe4en1e.TextToMe.socket;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.websocket.Session;
 import me.pe4en1e.TextToMe.TtmBackendApplication;
 import me.pe4en1e.TextToMe.entity.Message;
 import me.pe4en1e.TextToMe.repository.MessageRepository;
@@ -11,10 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class MessageHandler implements WebSocketHandler {
 
     Logger logger = LoggerFactory.getLogger(TtmBackendApplication.class);
+
+    List<WebSocketSession> activeSessions = new ArrayList<>();
 
     @Autowired
     MessageRepository messageRepository;
@@ -22,6 +28,7 @@ public class MessageHandler implements WebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         logger.info("Connection established: " + session.getId());
+        activeSessions.add(session);
     }
 
     @Override
@@ -31,7 +38,9 @@ public class MessageHandler implements WebSocketHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         IncomingMessage incomingMessage = objectMapper.readValue(message.getPayload().toString(), IncomingMessage.class);
 
-//        session.sendMessage(new TextMessage(objectMapper.writeValueAsString(incomingMessage)));
+        for (var user : activeSessions) {
+            user.sendMessage(new TextMessage(objectMapper.writeValueAsString(incomingMessage)));
+        }
 
         Message messageData = Message.builder()
                 .text(incomingMessage.getMessage())
@@ -45,6 +54,7 @@ public class MessageHandler implements WebSocketHandler {
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
         logger.error("Transport error", exception.getCause());
+        activeSessions.remove(session);
     }
 
     @Override

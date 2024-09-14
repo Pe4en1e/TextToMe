@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Получаем имя пользователя из localStorage
-    const username = "author" // localStorage.getItem('username');
+    const username = "саня сгима гучи" // localStorage.getItem('username');
 
     // if (!username) {
     //     alert("Username is missing");
@@ -20,17 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // Событие получения сообщения
-    // socket.onmessage = function (event) {
-    //     const data = JSON.parse(event.data);
+    socket.onmessage = function (event) {
+        const data = JSON.parse(event.data);
 
-    //     // Обработка полученного сообщения
-    //     if (data.type === 'message') {
-    //         const chatBox = document.getElementById('chat-box');
-    //         const messageElement = document.createElement('div');
-    //         messageElement.innerText = `${data.username}: ${data.message}`;
-    //         chatBox.appendChild(messageElement);
-    //     }
-    // };
+        // Обработка полученного сообщения
+        const chatBox = document.getElementById('chatBlock');
+        const messageElement = document.createElement('div');
+        messageElement.className = "messageBubble"
+        messageElement.innerHTML = `<h1 class="messageBubbleAuthor">${data.author}</h1><h1 class="messageBubbleContent">${data.message}</h1>`
+        chatBox.appendChild(messageElement);
+    };
 
     // Событие закрытия соединения
     socket.onclose = function (event) {

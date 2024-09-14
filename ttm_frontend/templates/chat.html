@@ -12,13 +12,12 @@
 <body>
     <section class="chatWindow">
         <div class="wrapper">
-            <div class="chatBlock">
+            <div class="chatBlock" id="chatBlock">
 
                 {% for message in messages %}
 
                 <div class="messageBubble">
-                    <h1 class="messageBubbleAuthor">{{ message['author'] }}</h1>
-                    <h1 class="messageBubbleContent"> {{ message['text'] }} </h1>
+                    <h1 class="messageBubbleAuthor">{{ message['author'] }}</h1><h1 class="messageBubbleContent"> {{ message['text'] }} </h1>
                 </div>
 
                 {% endfor %}
