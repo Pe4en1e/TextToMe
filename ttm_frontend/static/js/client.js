@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Получаем имя пользователя из localStorage
-    const username = "саня сгима гучи" // localStorage.getItem('username');
+    const username =  localStorage.getItem('author');
 
     // if (!username) {
     //     alert("Username is missing");
@@ -29,6 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
         messageElement.className = "messageBubble"
         messageElement.innerHTML = `<h1 class="messageBubbleAuthor">${data.author}</h1><h1 class="messageBubbleContent">${data.message}</h1>`
         chatBox.appendChild(messageElement);
+
+
+        const scrollToEnd = () => {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        new MutationObserver(scrollToEnd).observe(chatBox, {childList: true})
+
     };
 
     // Событие закрытия соединения
@@ -48,9 +56,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const message = messageInput.value;
 
         if (message) {
-            socket.send(JSON.stringify({ author: username, message: message }));
+            socket.send(JSON.stringify({ "author": username, "message": message }));
             messageInput.value = "";  // Очищаем поле ввода
         }
     });
 
+    document.getElementById('text').onkeypress = function(e) {
+        if (e.keyCode === 13) {
+          document.getElementById('send').click();
+        }
+      };
+
 });
+
+
+

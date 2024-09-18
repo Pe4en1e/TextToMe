@@ -54,12 +54,12 @@ public class MessageHandler implements WebSocketHandler {
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
         logger.error("Transport error", exception.getCause());
-        activeSessions.remove(session);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
         logger.info("Connection closed: " + session.getId());
+        activeSessions.remove(session);
     }
 
     @Override
