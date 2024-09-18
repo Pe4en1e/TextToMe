@@ -21,4 +21,4 @@ def chat():
     return render_template('chat.html', messages = x, username = username)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=7070)
+    app.run(debug=True, port=7070, host='0.0.0.0')

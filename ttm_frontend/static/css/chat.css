@@ -21,7 +21,7 @@ html{
 
 .chatBlock {
 
-    height: 90vh;
+    height: 88vh;
     width: 100%;
     overflow-y: scroll;
 
@@ -29,7 +29,7 @@ html{
 
 .messageBlock {
 
-    height: 10vh;
+    height: 12vh;
     width: 100%;
 
 }
@@ -46,6 +46,16 @@ html{
     margin-top: 25px;
     height: 40px;
     width: 800px;
+
+    background-color: black;
+    border-radius: 10px;
+    border: #5865F2 2px solid;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #fff;
+
+    padding: 10px;
 }
 
 .messageSend {
@@ -75,10 +85,11 @@ html{
     margin-left: 10px;
     font-weight: 500;
     font-size: 24px;
+    color: #5865F2;
 }
 
 .messageBubbleContent {
-    margin-top: 20px;
+    margin-top: 17px;
     margin-left: 10px;
     font-weight: 500;
     font-size: 20px;
