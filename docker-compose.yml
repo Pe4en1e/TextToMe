@@ -1,17 +1,17 @@
 version: '3.8'
 
 services:
-   ttm-front:
-     build: ./ttm_frontend
-     command: gunicorn main:app -b 0.0.0.0:1034
-     volumes:
-       - ./front:/ttm_front
-     ports:
-       - 1034:1034
-     container_name: ttm_frontend
-     depends_on:
-       - ttm-back
-   ttm-db:
+  ttm-front:
+    build: ./ttm_frontend
+    command: gunicorn main:app -b 0.0.0.0:1034
+    volumes:
+     - ./front:/ttm_front
+    ports:
+     - 1034:1034
+    container_name: ttm_frontend
+    depends_on:
+     - ttm-back
+  ttm-db:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: textToMeDB
@@ -19,10 +19,10 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: ttm12345
     container_name: ttm_db
-   ttm-back:
-     build: ./ttm_backend
-     ports:
-       - "9453:8080"
-     depends_on:
-      - ttm-db
-     container_name: ttm_backend
+  ttm-back:
+    build: ./ttm_backend
+    ports:
+     - "9453:8080"
+    depends_on:
+     - ttm-db
+    container_name: ttm_backend
