@@ -24,6 +24,10 @@ services:
   ttm-back:
     build: ./ttm_backend
     restart: on-failure:10
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://ttm-db:3306/default
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=ttm12345
     ports:
      - "9453:8080"
     depends_on:
