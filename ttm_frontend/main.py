@@ -15,7 +15,7 @@ def chat():
 
     username = request.form.get("username")
 
-    x = rq.get("http://127.0.0.1:8080/getAllMessages").json()
+    x = rq.get("http://ttm-back:8080/getAllMessages").json()
     print(x)
 
     return render_template('chat.html', messages = x, username = username)

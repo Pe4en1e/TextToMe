@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 
     // Устанавливаем соединение с WebSocket сервером
-    const socket = new WebSocket("ws://localhost:8080/websocket"); // Укажи свой WebSocket URL
+    const socket = new WebSocket("ws://128.0.128.242:9453/websocket"); // Укажи свой WebSocket URL
 
     // Событие открытия соединения
     socket.onopen = function (event) {
