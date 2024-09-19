@@ -11,7 +11,7 @@ services:
      container_name: ttm_frontend
      depends_on:
        - ttm-back
-  ttm-db:
+   ttm-db:
     image: mysql:latest
     ports:
       - "3310:3306"
