@@ -30,6 +30,5 @@ services:
        - SPRING_DATASOURCE_USERNAME=user
        - SPRING_DATASOURCE_PASSWORD=ttm12345
      depends_on:
-       ttm-db:
-         condition: service_completed_successfully
+      - ttm-db
      container_name: ttm_backend
