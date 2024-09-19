@@ -23,8 +23,10 @@ services:
     container_name: ttm_db
   ttm-back:
     build: ./ttm_backend
+    restart: on-failure:10
     ports:
      - "9453:8080"
     depends_on:
      - ttm-db
     container_name: ttm_backend
+    
