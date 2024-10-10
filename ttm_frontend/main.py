@@ -1,24 +1,31 @@
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import requests as rq
 
 app = Flask(__name__)
+app.secret_key = 'adalsdaskda;lsdlasdk;erwq;'
 
 @app.route('/')
 def root():
     return render_template('index.html')
 
-@app.route('/chat', methods = ['GET', 'POST'])
+@app.route('/chat')
 def chat():
-    if request.method == "GET":
+    if not "username" in session:
         return redirect('/')
 
-    username = request.form.get("username")
+    username = session["username"]
 
     x = rq.get("http://ttm-back:8080/getAllMessages").json()
-    print(x)
 
     return render_template('chat.html', messages = x, username = username)
+
+@app.route('/login', methods = ['POST'])
+def login():
+    username = request.form.get("username")
+    session['username'] = username
+    return redirect('/chat')
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=7070, host='0.0.0.0')
